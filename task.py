@@ -74,6 +74,9 @@ while url_list:
         # URL末尾の # 以降を除く
         next_url = urldefrag(next_url)[0]
 
+        if urlparse(next_url).path.lower().endswith('.pdf'):
+            continue
+
         # 同一ドメインで、まだ調べていないURLをリストに追加する
         if urlparse(next_url).netloc == domain:
             if next_url not in checked_urls and next_url not in url_list:
